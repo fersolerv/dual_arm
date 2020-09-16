@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<robot name="UR5" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <joint name="connector__left" type="fixed">
+    <parent link="base_link"/>
+    <child link="Base__left"/>
+    <origin rpy="0 -2.35619 0" xyz="-0.23963 0.0 1.3890"/>
+    <axis xyz="-1 0 0"/>
+  </joint>
+
+  <link name="Base__left">
+    <visual>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/visual/Base.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/collision/Base.stl"/>
+      </geometry>
+    </collision> 
+    <inertial>
+      <mass value="4.0"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.00443333156" ixy="0.0" ixz="0.0" iyy="0.00443333156" iyz="0.0" izz="0.0072"/>
+    </inertial>
+  </link>
+
+  <joint name="ShoulderPanJoint_left" type="revolute">
+    <parent link="Base__left"/>
+    <child link="Shoulder_left"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.089159"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="150.0" lower="-6.2831853" upper="6.2831853" velocity="3.15"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <link name="Shoulder_left">
+    <visual>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/visual/Shoulder.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/collision/Shoulder.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.7"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.010267495893" ixy="0.0" ixz="0.0" iyy="0.010267495893" iyz="0.0" izz="0.00666"/>
+    </inertial>
+  </link>
+  
+  <joint name="ShoulderLiftJoint_left" type="revolute">
+    <parent link="Shoulder_left"/>
+    <child link="UpperArm_left"/>
+    <origin rpy="0.0 -0.74 0.0" xyz="0.0 0.13585 0.0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="150.0" lower="-6.2831853" upper="6.2831853" velocity="3.15"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <link name="UpperArm_left">
+    <visual>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/visual/UpperArm.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/collision/UpperArm.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="8.393"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.28"/>
+      <inertia ixx="0.22689067591" ixy="0.0" ixz="0.0" iyy="0.22689067591" iyz="0.0" izz="0.0151074"/>
+    </inertial>
+  </link>
+  
+  <joint name="ElbowJoint_left" type="revolute">
+    <parent link="UpperArm_left"/>
+    <child link="ForeArm_left"/>
+    <origin rpy="0.0 -2.69 0.0" xyz="0.0 -0.1197 0.425"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="150.0" lower="-6.2831853" upper="6.2831853" velocity="3.15"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <link name="ForeArm_left">
+    <visual>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/visual/Forearm.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/collision/ForeArm.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.275"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.25"/>
+      <inertia ixx="0.049443313556" ixy="0.0" ixz="0.0" iyy="0.049443313556" iyz="0.0" izz="0.004095"/>
+    </inertial>
+  </link>
+  
+  <joint name="Wrist1Joint_left" type="revolute">
+    <parent link="ForeArm_left"/>
+    <child link="Wrist1_left"/>
+    <origin rpy="0.0 -3.59 0.0" xyz="0.0 0.0 0.39225"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="28.0" lower="-6.2831853" upper="6.2831853" velocity="3.2"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <link name="Wrist1_left">
+    <visual>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/visual/Wrist1.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/collision/Wrist1.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.219"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.111172755531" ixy="0.0" ixz="0.0" iyy="0.111172755531" iyz="0.0" izz="0.21942"/>
+    </inertial>
+  </link>
+  
+  <joint name="Wrist2Joint_left" type="revolute">
+    <parent link="Wrist1_left"/>
+    <child link="Wrist2_left"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.093 0.0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="28.0" lower="-6.2831853" upper="6.2831853" velocity="3.2"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <link name="Wrist2_left">
+    <visual>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/visual/Wrist2.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/collision/Wrist2.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.219"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.111172755531" ixy="0.0" ixz="0.0" iyy="0.111172755531" iyz="0.0" izz="0.21942"/>
+    </inertial>
+  </link>
+  
+  <joint name="Wrist3Joint_left" type="revolute">
+    <parent link="Wrist2_left"/>
+    <child link="Wrist3_left"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.09465"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="28.0" lower="-6.2831853" upper="6.2831853" velocity="3.2"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <link name="Wrist3_left">
+    <visual>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/visual/Wrist3.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dual_description/meshes/UR5_DAE/collision/Wrist3.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1879"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.0171364731454" ixy="0.0" ixz="0.0" iyy="0.0171364731454" iyz="0.0" izz="0.033822"/>
+    </inertial>
+  </link>
+
+  <!--######################## TRANSMISSIONS #####################################-->
+  <transmission name="Shoulder_left_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="shoulder_left_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="ShoulderPanJoint_left">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="UpperArm_left_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="UpperArm_left_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="ShoulderLiftJoint_left">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>  
+
+  <transmission name="Elbow_left_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="Elbow_left_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="ElbowJoint_left">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="Wrist1_left_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="Wrist1_left_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="Wrist1Joint_left">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="Wrist2_left_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="Wrist2_left_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="Wrist2Joint_left">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="Wrist3_left_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="Wrist3_left_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="Wrist3Joint_left">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <!--######################## ROS_CONTROL #####################################-->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      <controlPeriod>0.001</controlPeriod>
+      <legacyModeNS>false</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+  <!--######################## ROS_Controllers #####################################-->
+  <gazebo>
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+      <jointName>
+        ShoulderPanJoint_left, 
+        ShoulderLiftJoint_left, 
+        ElbowJoint_left,
+        Wrist1Joint_left,
+        Wrist2Joint_left,
+        Wrist3Joint_left
+      </jointName>
+    </plugin>
+  </gazebo>
+
+</robot>

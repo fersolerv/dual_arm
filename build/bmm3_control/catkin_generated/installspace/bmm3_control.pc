@@ -1,0 +1,8 @@
+prefix=/home/parallels/ros/dual_robot/install
+
+Name: bmm3_control
+Description: Description of bmm3_control
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

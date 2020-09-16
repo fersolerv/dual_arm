@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="bmm3_wheel">
+
+	<!--Constant Parameters-->
+	<xacro:property name="effort"        value="150.0"/>
+  	<xacro:property name="lower_limit"   value="-6.2831853"/>
+  	<xacro:property name="upper_limit"   value="6.2831853"/>
+  	<xacro:property name="velocity"      value="3.15"/>
+	<xacro:property name="M_PI" value="3.14159"/>
+	
+	<xacro:macro name="bmm3_wheel" params="wheel_prefix *joint_pose">
+		<link name="${wheel_prefix}_wheel_link">
+			<inertial>
+				<mass value="2.637" />
+				<origin xyz="0 0 0" />
+				<inertia  ixx="0.02467" ixy="0" ixz="0" iyy="0.04411" iyz="0" izz="0.02467" />
+			</inertial>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://dual_description/meshes/BMM3_DAE/wheel.dae" />
+				</geometry>
+			</visual>
+			<collision>
+                <geometry>
+                    <sphere radius="0.10"/>
+                </geometry>
+                <material name="black"/>
+            </collision>
+		</link>
+
+		<gazebo reference="${wheel_prefix}_wheel_link">
+			<mu1 value="1.0"/>
+			<mu2 value="1.0"/>
+			<kp value="10000000.0" />
+			<kd value="1.0" />
+			<fdir1 value="1 0 0"/>
+		</gazebo>
+
+		<joint name="${wheel_prefix}_wheel_joint" type="continuous">
+			<parent link="base_link"/>
+			<child link="${wheel_prefix}_wheel_link"/>
+			<xacro:insert_block name="joint_pose"/>
+			<axis xyz="-1 0 0" rpy="0 0 0" />
+			<limit effort="${effort}" lower="${lower_limit}" upper="${upper_limit}" velocity="${velocity}"/>
+		</joint>
+
+		<transmission name="${wheel_prefix}_wheel_trans" type="SimpleTransmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="${wheel_prefix}_wheel_motor">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="${wheel_prefix}_wheel_joint">
+				<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+
+        <gazebo>
+            <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+                <jointName>${wheel_prefix}_wheel_joint</jointName>
+            </plugin>
+        </gazebo>
+
+	</xacro:macro>
+</robot>

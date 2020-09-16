@@ -1,0 +1,2 @@
+dual_control:dual_description:dual_gazebo
+-DCATKIN_DEVEL_PREFIX=/home/parallels/ros/dual_robot/devel -DCMAKE_INSTALL_PREFIX=/home/parallels/ros/dual_robot/install -G Unix Makefiles
