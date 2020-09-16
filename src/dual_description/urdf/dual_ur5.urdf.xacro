@@ -2,7 +2,7 @@
 
 <robot name="BMM3" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!--File includes-->
+    <!--File includes--> 
     <xacro:include filename="$(find dual_description)/urdf/materials.xacro"/>
     <xacro:include filename="$(find dual_description)/urdf/ur5_left.urdf.xacro"/>
     <xacro:include filename="$(find dual_description)/urdf/ur5_right.urdf.xacro"/>
