@@ -1,7 +1,14 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(dual_control)
 
-find_package(catkin REQUIRED COMPONENTS roslaunch)
+find_package(catkin REQUIRED COMPONENTS 
+  rospy
+  roslaunch
+  gazebo_msgs
+  gazebo_plugins
+  gazebo_ros
+  gazebo_ros_control
+)
 
 catkin_package()
 

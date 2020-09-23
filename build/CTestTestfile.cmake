@@ -5,6 +5,6 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
-subdirs("dual_control")
 subdirs("dual_description")
 subdirs("dual_gazebo")
+subdirs("dual_control")

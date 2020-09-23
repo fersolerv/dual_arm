@@ -1,0 +1,28 @@
+dual_arm:
+  dual_arm_joint_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - ShoulderPanJoint_left
+      - ShoulderLiftJoint_left
+      - ElbowJoint_left
+      - Wrist1Joint_left
+      - Wrist2Joint_left
+      - Wrist3Joint_left
+
+    gains:
+      ShoulderPanJoint_left:  {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      ShoulderLiftJoint_left: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      ElbowJoint_left:        {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      Wrist1Joint_left:       {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      Wrist2Joint_left:       {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      Wrist3Joint_left:       {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+
+
+  # gripper_controller:
+  #   type: "position_controllers/JointTrajectoryController"
+  #   joints:
+  #     - finger_joint1
+  #     - finger_joint2
+  #   gains:
+  #     finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+  #     finger_joint2:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}

@@ -131,9 +131,9 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/parallels/ros/dual_robot/build/gtest/cmake_install.cmake")
-  include("/home/parallels/ros/dual_robot/build/dual_control/cmake_install.cmake")
   include("/home/parallels/ros/dual_robot/build/dual_description/cmake_install.cmake")
   include("/home/parallels/ros/dual_robot/build/dual_gazebo/cmake_install.cmake")
+  include("/home/parallels/ros/dual_robot/build/dual_control/cmake_install.cmake")
 
 endif()
 
